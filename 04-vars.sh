@@ -13,3 +13,6 @@ echo $a
 echo "${b}"
 echo "${d}"
 
+echo value of d is : $d 
+
+
