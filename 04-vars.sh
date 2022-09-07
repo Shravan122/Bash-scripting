@@ -9,5 +9,5 @@ b=abc
 #### No datatypes in bash scripting.Everthing is a string by default:
 
 echo value of a is : $a
-ech0 $a
+echo $a
 echo "${b}"
