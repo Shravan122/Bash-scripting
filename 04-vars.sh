@@ -6,6 +6,8 @@ a=10
 b=abc
 # abc is string
 
+d=150
+
 #### No datatypes in bash scripting.Everthing is a string by default:
 
 echo value of a is : $a
