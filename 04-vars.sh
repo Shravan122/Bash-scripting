@@ -6,7 +6,10 @@ a=10
 b=abc
 # abc is string
 
-d=150
+d=150 
+
+Date=$(Date +%F)
+
 
 #### No datatypes in bash scripting.Everthing is a string by default:
 
