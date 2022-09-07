@@ -15,6 +15,10 @@ echo $a
 echo "${b}"
 echo "${d}"
 
-echo value of d is : $d 
+echo value of d is : $d
+
+DATE=2022-09-05
+echo "good morning, todays date is $DATE"
+
 
 
