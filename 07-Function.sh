@@ -22,3 +22,11 @@ stat() {
 
 }
 
+stat
+sleep5
+stat
+sleep5
+stat
+sleep5
+
+
