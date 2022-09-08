@@ -23,10 +23,10 @@ stat() {
 }
 
 stat
-sleep30
+sleep10
 stat
-sleep30
+sleep10
 stat
-sleep30
+
 
 
