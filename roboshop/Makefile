@@ -1,4 +1,4 @@
-froentend:
+frontend:
 	bash components/frontend.sh
 
 catalogue:
