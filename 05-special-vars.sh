@@ -13,11 +13,8 @@ echo value of b is = $1
 echo value of c is = $2
 echo value of d is = $3
 
-# sh scriptname.sh 100 200 300
+# sh scriptname.sh 20 40 30
 # sh scriptname.sh $1  $2  $3 
 
-echo $*
-echo $#
-echo $$
-echo $@
+
 
