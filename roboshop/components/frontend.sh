@@ -4,7 +4,7 @@ set -e
 
 source components/common.sh
 
- yum install nginx -y  >> /tmp/frontend.log
+ yum install nginx -y   >> /tmp/frontend.log
  systemctl enable nginx
  systemctl start nginx 
  curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
