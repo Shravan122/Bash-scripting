@@ -42,5 +42,10 @@ source components/common.sh
  mv localhost.conf /etc/nginx/default.d/roboshop.conf 
 
   echo "Starting nginx: "
-  systemctl restart nginx
-  
+  systemctl restart nginx 
+   if [ $? -eq 0 ] ; then 
+    echo -e "\e[32m Success \e[0m"
+   else 
+    echo -e "\e[31m Failure.Look for the logs \e[0m"
+    
+
