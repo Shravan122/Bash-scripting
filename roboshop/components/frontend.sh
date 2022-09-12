@@ -5,32 +5,17 @@ source components/common.sh
 
  echo -n "Installing nginx: "
  yum install nginx -y  >>/tmp/frontend.log 
-    if [ $? -eq 0 ] ; then 
-     echo -e "\e[32m Success \e[0m"
-  else 
-     echo -e "\e[31m Failure.Look for the logs \e[0m" 
-   fi   
+ stat $?
 
  systemctl enable nginx 
 
   echo -n "Starting nginx: "
    systemctl start nginx 
-    if [ $? -eq 0 ] ; then 
-      echo -e "\e[32m Success \e[0m"
-    else 
-      echo -e "\e[31m Failure.look for the logs \e[om" 
-    fi       
+    stat $?     
 
-
-
-
- echo -n "Downloading the schema"  
- curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
-    if [ $? -eq 0 ] ; then 
-      echo -e "\e[32m Success \e[0m" 
-    else 
-      echo -e "\e[31m Failure.Look for the logs \e[0m" 
-    fi  
+  echo -n "Downloading the schema"  
+  curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
+   stat $? 
 
 
  cd /usr/share/nginx/html
@@ -43,10 +28,4 @@ source components/common.sh
 
   echo -n "Starting nginx: "
   systemctl restart nginx 
-   if [ $? -eq 0 ] ; then 
-    echo -e "\e[32m Success \e[0m"
-   else 
-    echo -e "\e[31m Failure.Look for the logs \e[0m" 
-   fi 
-
-
+  stat $?
