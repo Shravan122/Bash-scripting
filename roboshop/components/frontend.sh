@@ -27,7 +27,9 @@ source components/common.sh
       echo -e "\e[32m Success \e[0m" 
     else 
       echo -e "\e[31m Failure.Look for the logs \e[0m" 
-    fi   
+    fi  
+    
+     
  cd /usr/share/nginx/html
  rm -rf *
  unzip -o /tmp/frontend.zip >>/tmp/frpntend.log
