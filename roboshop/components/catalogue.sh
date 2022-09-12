@@ -32,7 +32,7 @@ FUSER=roboshop
    unzip -o /tmp/${COMPONENT}.zip && mv ${COMPONENT}-main ${COMPONENT} && cd /home/${FUSER}/${COMPONENT} >>/tmp/${COMPONENT}.log 
    stat $?  
 
-    echo -n "Installing $COMPONENt Dependencies:" 
+    echo -n "Installing $COMPONENT Dependencies:" 
     npm install 
     stat $?
 
