@@ -29,7 +29,7 @@ FUSER=roboshop
 
    echo -n "Extracting $COMPONENT content:"
    cd /home/${FUSER}  >>/tmp/${COMPONENT}.log 
-   unzip -o /tmp/${COMPONENT}.zip && mv ${COMPONENT}-main ${COMPONENT} && cd /home/${FUSER}/${COMPONENT} >>/tmp/${COMPONENT}.log 
+   unzip -o /tmp/${COMPONENT}.zip >>/tmp/${COMPONENT}.log   && mv ${COMPONENT}-main ${COMPONENT} && cd /home/${FUSER}/${COMPONENT} >>/tmp/${COMPONENT}.log 
    stat $?  
 
     echo -n "Installing $COMPONENT Dependencies:" 
