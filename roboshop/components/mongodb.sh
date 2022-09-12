@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source components/common.sh  
+ 
 COMPONENT=mongodb
 
 echo -n "Configuring the MongoDB repo:"
