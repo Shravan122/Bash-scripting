@@ -3,7 +3,7 @@ set -e
 
 source components/common.sh 
 
- echo "Installing nginx: "
+ echo -n "Installing nginx: "
  yum install nginx -y  >>/tmp/frontend.log 
     if [ $? -eq 0 ] ; then 
      echo -e "\e[32m Success \e[0m"
@@ -13,7 +13,7 @@ source components/common.sh
 
  systemctl enable nginx 
 
-  echo "Starting nginx: "
+  echo -n "Starting nginx: "
    systemctl start nginx 
     if [ $? -eq 0 ] ; then 
       echo -e "\e[32m Success \e[0m"
@@ -24,7 +24,7 @@ source components/common.sh
 
 
 
- echo "Downloading the schema"  
+ echo -n "Downloading the schema"  
  curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
     if [ $? -eq 0 ] ; then 
       echo -e "\e[32m Success \e[0m" 
@@ -41,7 +41,7 @@ source components/common.sh
  rm -rf frontend-main README.md
  mv localhost.conf /etc/nginx/default.d/roboshop.conf 
 
-  echo "Starting nginx: "
+  echo -n "Starting nginx: "
   systemctl restart nginx 
    if [ $? -eq 0 ] ; then 
     echo -e "\e[32m Success \e[0m"
