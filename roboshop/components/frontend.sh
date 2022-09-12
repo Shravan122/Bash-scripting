@@ -14,8 +14,13 @@ source components/common.sh
  systemctl enable nginx 
 
   echo "Starting nginx: "
-   systemctl start nginx
-   
+   systemctl start nginx 
+    if [ $? -eq 0 ] ; then 
+      echo -e "\e[32m Success \e[0m"
+    else 
+      echo -e "\e[31m Failure.look for the logs \e[om" 
+    fi       
+
 
 
 
@@ -34,4 +39,8 @@ source components/common.sh
  mv frontend-main/* .
  mv static/* .
  rm -rf frontend-main README.md
- mv localhost.conf /etc/nginx/default.d/roboshop.conf
+ mv localhost.conf /etc/nginx/default.d/roboshop.conf 
+
+  echo "Starting nginx: "
+  systemctl restart nginx
+  
