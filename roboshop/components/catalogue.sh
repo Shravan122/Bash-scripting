@@ -20,7 +20,7 @@ FUSER=roboshop
    stat $?
 
    echo -n "Downloading the $COMPONENT:"
-    curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/stans-robot-project/${COMPONENET}/archive/main.zip" >>/tmp/${COMPONENT}.log
+    curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/stans-robot-project/${COMPONENT}/archive/main.zip" >>/tmp/${COMPONENT}.log
     stat $? 
 
     echo -n "Clean up of old $COMPONENT content:"
