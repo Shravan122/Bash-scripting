@@ -1,7 +1,7 @@
 frontend:
 	bash components/frontend.sh 
 
-MongoDB
+MongoDB:
 	bash components/MongoDB.sh	
 
 catalogue:
