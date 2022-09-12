@@ -34,4 +34,6 @@ stat $?
  echo -n "Injecting the $COMPONENT schema:"
  mongo < catalogue.js  >> /tmp/${COMPONENT}.log
  mongo < users.js  >> /tmp/${COMPONENT}.log
- stat $?
+ stat $? 
+
+ echo -n -e "\n**********____________$COMOPNENT Configuration completed__________*********\n"
