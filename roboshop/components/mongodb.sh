@@ -3,7 +3,7 @@
 source components/common.sh  
 COMPONENT=mongodb
 
-echo -n "Configuring the $(COMPONENT):"
+echo -n "Configuring the MongoDB repo:"
 curl -s -o /etc/yum.repos.d/$(COMPONENT).repo https://raw.githubusercontent.com/stans-robot-project/$(COMPONENT)/main/mongo.repo 
 stat $?
 
