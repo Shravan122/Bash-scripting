@@ -33,7 +33,7 @@ FUSER=roboshop
    stat $?  
 
     echo -n "Installing $COMPONENT Dependencies:" 
-    npm install 
+    npm install  &>>/tmp/${COMPONENT}.log
     stat $?
 
 
