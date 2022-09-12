@@ -13,18 +13,26 @@ source components/common.sh
    systemctl start nginx 
     stat $?     
 
-  echo -n "Downloading the schema"  
+  echo -n "Downloading the schema: "  
   curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
    stat $? 
 
 
  cd /usr/share/nginx/html
- rm -rf *
- unzip -o /tmp/frontend.zip >>/tmp/frpntend.log
+ rm -rf * 
+ echo -n "Extracting the zip file: "
+ unzip -o /tmp/frontend.zip >>/tmp/frpntend.log 
+ stat $? 
+
  mv frontend-main/* .
- mv static/* .
- rm -rf frontend-main README.md
+ mv static/* . 
+ echo -n "Performing cleanup: "
+ rm -rf frontend-main README.md 
+ stat $? 
+  
+ echo -n "Configuring reverse proxy:" 
  mv localhost.conf /etc/nginx/default.d/roboshop.conf 
+ stat $? 
 
   echo -n "Starting nginx: "
   systemctl restart nginx 
