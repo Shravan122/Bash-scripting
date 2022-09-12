@@ -16,7 +16,7 @@ FUSER=roboshop
    stat $? 
 
    echo -n "Adding $FUSER user:" 
-   useradd roboshop 
+   id ${FUSER} || useradd ${roboshop} 
    stat $?
 
    echo -n "Downloading the $COMPONENT:"
