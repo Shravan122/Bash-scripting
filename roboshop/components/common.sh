@@ -39,9 +39,7 @@ USER_SETUP() {
      unzip -o  /tmp/${COMPONENT}.zip >>/tmp/${COMPONENT}.log   && mv ${COMPONENT}-main ${COMPONENT} && cd /home/${FUSER}/${COMPONENT} >>/tmp/${COMPONENT}.log  
      stat $?  
 
-     echo -n "Changing the ownership to ${FUSER}:"
-     chown -R $FUSER:$FUSER $COMPONENT/
-     stat $? 
+    
   }   
      
     CONFIG_SVC() {
