@@ -36,7 +36,7 @@ source components/common.sh
 
  for component in catalogue user ; do 
  echo -n "Updating the proxy file:" 
- sed -i -e "/${COMPONENET}/s/localhost/${COMPONENT}.roboshop.internal/" /etc/nginx/default.d/roboshop.conf
+ sed -i -e "/${component}/s/localhost/${component}.roboshop.internal/" /etc/nginx/default.d/roboshop.conf
  stat $? 
  done
 
