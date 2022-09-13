@@ -1,6 +1,8 @@
 #!/bin/bash 
 
-set -e 
+set -e  
+ 
+source components/common.sh  
 
 COMPONENT=mysql
 LOGFILE=/tmp/robot.log
