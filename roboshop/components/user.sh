@@ -16,7 +16,7 @@ FUSER=roboshop
    stat $? 
 
    echo -n "Adding $FUSER user:" 
-   id ${FUSER} >>/tmp/${COMPONENT}.log || useradd ${roboshop} 
+   id ${FUSER} >>/tmp/${COMPONENT}.log || useradd ${FUSER} 
    stat $?
 
    echo -n "Downloading the $COMPONENT:"
@@ -36,13 +36,20 @@ FUSER=roboshop
     npm install  &>>/tmp/${COMPONENT}.log
     stat $? 
 
-    echo -n "Configuring the Systemd file:"
-     sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/${FUSER}/${COMPONENT}/systemd.service
-     mv /home/${FUSER}/${COMPONENT}/systemd.service /etc/systemd/system/catalogue.service
-     stat $?
+       echo -n "Setup Systemd file:" 
+       sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' /home/roboshop/user/systemd.service 
+       mv /home/${FUSER}/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
+       stat $?
       
-      echo -n "Starting the service:"
+        echo -n "Starting the service:"
         systemctl daemon-reload    &>>/tmp/${COMPONENT}.log 
         systemctl enable ${COMPONENT} &>>/tmp/${COMPONENT}.log 
         systemctl start ${COMPONENT}  &>>/tmp/${COMPONENT}.log 
-        stat $?
+        stat $? 
+
+        
+       
+
+        
+
+    
