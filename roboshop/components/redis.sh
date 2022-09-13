@@ -19,9 +19,9 @@ sed -i -e 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf
 stat $?
 
 echo -n "Starting $COMPONENT:"
- systemctl  daemon-reload  $>> /tmp/${COMPONENT}.log
- systemctl enable $COMPONENT  $>> /tmp/${COMPONENT}.log
- systemctl  restart  $COMPONENT  $>> /tmp/${COMPONENT}.log
+ systemctl  daemon-reload  &>> /tmp/${COMPONENT}.log
+ systemctl enable $COMPONENT  &>> /tmp/${COMPONENT}.log
+ systemctl  restart  $COMPONENT  &>> /tmp/${COMPONENT}.log
 
 
 
