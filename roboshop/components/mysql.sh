@@ -54,9 +54,6 @@ MYSQL_PASSWORD="RoboShop@1"
 
 
 
-# curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/stans-robot-project/mysql/main/mysql.repo
-# yum install mysql-community-server -y
-# systemctl enable mysqld 
-# systemctl start mysqld
+ 
 
 
