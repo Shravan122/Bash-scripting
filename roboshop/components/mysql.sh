@@ -28,7 +28,7 @@ MYSQL_PASSWORD="RoboShop@1"
    stat $? 
 
     
-    echo show databases; | mysql -uroot -pRoboShop@1 &>> ${LOGFILE}
+    echo show databases | mysql -uroot -pRoboShop@1 &>> ${LOGFILE}
     if [ $? -ne 0 ]; then 
     echo -n "Reset Root Password: "
     echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password  -uroot -p"${DEFAULT_ROOT_PASSWORD}" &>> ${LOGFILE}
