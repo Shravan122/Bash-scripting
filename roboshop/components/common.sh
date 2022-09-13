@@ -72,7 +72,7 @@ USER_SETUP() {
     DOWNLOAD_AND_EXTRACT 
 
      echo -n "Installing $COMPONENT Dependencies:"
-     cd $COMPONENT && npm install &>> /tmp/${COMPONENT}.log 
+      npm install &>> /tmp/${COMPONENT}.log 
      stat $? 
     
      # Calling Config_SVC Function
