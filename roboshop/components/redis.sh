@@ -24,7 +24,7 @@ echo -n "Starting $COMPONENT:"
  systemctl  enable $COMPONENT  &>> /tmp/${COMPONENT}.log
  systemctl  restart  $COMPONENT  &>> /tmp/${COMPONENT}.log
  systemctl  start   $COMPONENT &>> /tmp/${COMPONENT}.log 
-
+ stat $?
 
 
 # Update the BindIP from 127.0.0.1 to 0.0.0.0 in config file /etc/redis.conf & /etc/redis/redis.conf 

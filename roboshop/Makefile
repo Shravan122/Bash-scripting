@@ -8,7 +8,10 @@ catalogue:
 	bash components/catalogue.sh 
 
 redis:
-	bash components/redis.sh	
+	bash components/redis.sh 
+
+user:
+	bash components/user.sh		
 
 cart:
 	bash components/cart.sh		
