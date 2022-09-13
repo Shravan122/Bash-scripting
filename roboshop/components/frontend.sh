@@ -32,7 +32,13 @@ source components/common.sh
   
  echo -n "Configuring reverse proxy:" 
  mv localhost.conf /etc/nginx/default.d/roboshop.conf 
+ stat $?  
+
+ for component in catalogue user ; do 
+ echo -n "Updating the proxy file" 
+ sed -i -e "/${COMPONENET}/s/localhost/${COMPONENT}.roboshop.internal/" /etc/nginx/default.d/roboshop.conf
  stat $? 
+ done
 
   echo -n "Starting nginx: "
   systemctl restart nginx 
