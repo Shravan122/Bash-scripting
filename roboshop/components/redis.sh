@@ -15,7 +15,8 @@ yum install redis-6.2.7 -y  &>> /tmp/${COMPONENT}.log
 stat $? 
 
 echo -n "Whitelisting the redis config:"
-sed -i -e 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf
+sed -i -e 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf 
+sed -i -e 's/127.0.0.1/0.0.0.0/g' /etc/redis/redis.conf
 stat $?
 
 echo -n "Starting $COMPONENT:"
