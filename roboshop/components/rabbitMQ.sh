@@ -13,4 +13,22 @@ stat $?
 
  echo -n "Installing RabbitMQ:"
  yum install rabbitmq-server -y &>> ${LOGFILE}
- stat $?
+ stat $? 
+
+ echo -n "Starting $COMPONENT :"
+systemctl enable rabbitmq-server &>> ${LOGFILE} 
+systemctl start rabbitmq-server &>> ${LOGFILE} 
+stat $? 
+
+rabbitmqctl list_users | grep roboshop  2>> ${LOGFILE} 
+if [ $? -ne 0 ]; then 
+    echo -n "Creating $COMPONENT Application user:" &>> ${LOGFILE} 
+    rabbitmqctl add_user roboshop roboshop123 &>> ${LOGFILE} 
+    stat $? 
+fi 
+
+echo -n "Configuring the $COMPONENT $FUSER permissions: "
+rabbitmqctl set_user_tags roboshop administrator &>> ${LOGFILE}  &&  rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"  &>> ${LOGFILE} 
+stat $? 
+
+echo -e "\n ************ $Component Installation Completed ******************** \n"
