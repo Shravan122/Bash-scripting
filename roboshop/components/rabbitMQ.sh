@@ -10,4 +10,8 @@ stat $?
  
  echo -n "Configuring the YUM repo for $COMPONENT:"
  curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash
+ stat $? 
+
+ echo -n "Installing RabbitMQ:"
+ yum install rabbitmq-server -y 
  stat $?
