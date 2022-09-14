@@ -14,4 +14,15 @@ DOWNLOAD_AND_EXTRACT
 
 cd /home/${FUSER}/${COMPONENT} 
 pip3 install -r requirements.txt  &>> ${LOGFILE}
-stat $?
+stat $? 
+
+USER_ID=$id(id -u roboshop)
+GROUP_ID=$id(id -u roboshop) 
+
+echo -n "Updating the $COMPONENT.ini file:"
+sed -i -e "/^uid/ c uid=${USERID}" -e "/gid/c gid=${GROUPID}" payment.ini 
+stat $?  
+
+CONFIG_SVC
+
+
