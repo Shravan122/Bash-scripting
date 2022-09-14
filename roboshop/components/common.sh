@@ -1,23 +1,23 @@
-# validating whether the executing user is root or not.
-ID=$(id -u)
-if [ $ID -ne 0 ]; then 
+   # validating whether the executing user is root or not.
+   ID=$(id -u)
+  if [ $ID -ne 0 ]; then 
     echo -e "\e[31m Try executing the script with sudo or a root user \e[0m"
     exit 1
-fi  
+  fi  
 
-# Declaring the stat function
-stat() {
-  if [ $1 -eq 0 ] ; then 
+   #Declaring the stat function
+   stat() {
+   if [ $1 -eq 0 ] ; then 
      echo -e "\e[32m Success \e[0m"
-  else 
+   else 
      echo -e "\e[31m Failure.Look for the logs \e[0m" 
    fi   
 } 
 
-FUSER=roboshop 
-LOGFILE=/tmp/robot.log  
+   FUSER=roboshop 
+   LOGFILE=/tmp/robot.log  
 
-USER_SETUP() {
+   USER_SETUP() {
    echo -n "Adding $FUSER user:" 
    id ${FUSER} &>>/tmp/${COMPONENT}.log || useradd ${FUSER} 
    stat $? 
@@ -25,7 +25,7 @@ USER_SETUP() {
 
   
 
-  DOWNLOAD_AND_EXTRACT() { 
+     DOWNLOAD_AND_EXTRACT() { 
      echo -n "Downloading the $COMPONENT:"
      curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/stans-robot-project/${COMPONENT}/archive/main.zip" >>/tmp/${COMPONENT}.log
      stat $? 
@@ -42,7 +42,7 @@ USER_SETUP() {
     
   }   
      
-    CONFIG_SVC() {
+      CONFIG_SVC() {
       echo -n "Configuring the Systemd file: "
       sed -i -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/'  -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' /home/${FUSER}/${COMPONENT}/systemd.service 
       mv /home/${FUSER}/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
@@ -56,43 +56,43 @@ USER_SETUP() {
     }  
        
 
-    NODEJS() { 
-    echo -n "Configure yum Remos for nodejs:"
-    curl -sL https://rpm.nodesource.com/setup_lts.x | bash  >>/tmp/${COMPONENT}.log 
-    stat $? 
+      NODEJS() { 
+      echo -n "Configure yum Remos for nodejs:"
+      curl -sL https://rpm.nodesource.com/setup_lts.x | bash  >>/tmp/${COMPONENT}.log 
+      stat $? 
 
-    echo -n "Installing nodejs:"
-    yum install nodejs -y  >>/tmp/${COMPONENT}.log
-    stat $? 
+      echo -n "Installing nodejs:"
+      yum install nodejs -y  >>/tmp/${COMPONENT}.log
+      stat $? 
 
-    # Calling User creation function
-    USER_SETUP 
+      #Calling User creation function
+      USER_SETUP 
 
-    # Calling Download and extract function
-    DOWNLOAD_AND_EXTRACT 
+      #Calling Download and extract function
+      DOWNLOAD_AND_EXTRACT 
 
-     echo -n "Installing $COMPONENT Dependencies:"
+      echo -n "Installing $COMPONENT Dependencies:"
       npm install &>> /tmp/${COMPONENT}.log 
-     stat $? 
+      stat $? 
     
-     # Calling Config_SVC Function
+      #Calling Config_SVC Function
       CONFIG_SVC
 }  
 
-     MAVEN() {
-    echo -n "Installing Maven: "
-    yum install maven -y &>> LOGFILE
-    stat $? 
+      MAVEN() {
+      echo -n "Installing Maven: "
+      yum install maven -y &>> LOGFILE
+      stat $? 
 
-    USER_SETUP
+     USER_SETUP
 
-    DOWNLOAD_AND_EXTRACT
+     DOWNLOAD_AND_EXTRACT
     
-    echo -n "Generating the artifact :"
-    cd /home/${FUSER}/${COMPONENT}
-    mvn clean package   &>> LOGFILE
-    mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
-    stat $? 
+     echo -n "Generating the artifact :"
+     cd /home/${FUSER}/${COMPONENT}
+     mvn clean package   &>> LOGFILE
+     mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
+     stat $? 
     
     CONFIG_SVC
 }
