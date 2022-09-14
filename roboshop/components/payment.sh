@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e 
+
 source components/common.sh 
 
 COMPONENT=payment
@@ -20,7 +22,7 @@ stat $?
  GROUP_ID=$(id -g roboshop)
 
 echo -n "Updating the $COMPONENT.ini file:"
-sed -i -e "/^uid/ c uid=${USERID}" -e "/^gid/ c gid=${GROUPID}" payment.ini 
+sed -i -e "/^uid/ c uid=${USER_ID}" -e "/^gid/ c gid=${GROUP_ID}" payment.ini 
 stat $?  
 
 CONFIG_SVC
