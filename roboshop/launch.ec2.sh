@@ -7,4 +7,4 @@ SGID="sg-092136d71863d6090"
 echo "The AMI which we are using is $AMI_ID" 
 
 
-aws ec2 run-instances --image-id ${AMI_ID} ---instance-type t3.micro   --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]"  --security-group-ids ${SGID} 
+aws ec2 run-instances --image-id ${AMI_ID} ---instance-type t3.micro  --security-group-ids ${SGID}  --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]"  
