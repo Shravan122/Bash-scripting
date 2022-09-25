@@ -7,6 +7,7 @@ if [ -z  "$1" ] ; then
 fi
 
 COMPONENT=$1 
+ENV=$2
 ZONEID="Z088865137EDV0W245DON"
 
 AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=DevOps-LabImage-CentOS7" | jq ' .Images[].ImageId'|sed 's/"//g')
@@ -20,7 +21,7 @@ echo "Private IP of the created machine is $PRIVATE_IP"
 echo "Spot Instance $COMPONENT is ready:"
 echo "Creating Route53 Record . . . . :" 
 
- sed -e "s/PRIVATEIP/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}/" r53.json  >/tmp/record.json
+ sed -e "s/PRIVATEIP/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}-{ENV}/" r53.json  >/tmp/record.json
 aws route53 change-resource-record-sets --hosted-zone-id ${ZONEID} --change-batch file:///tmp/record.json | jq 
 }
 
