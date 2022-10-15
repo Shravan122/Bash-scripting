@@ -14,7 +14,7 @@ echo value of c is = $2
 echo value of d is = $3
 
 # sh scriptname.sh 20 40 30
-# sh scriptname.sh $1  $2  $3 
+ # sh scriptname.sh $1  $2  $3 
 
 
 

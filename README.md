@@ -11,3 +11,5 @@ We will perform clone once and perform multiple times
    2. git commit : Adding commit message
    3. git pull   : Download only the changes
    
+## Sample Ansible Manual Command:
+ansible all -i inv -e ansible_user=centos -e ansible_password=DevOps321 -m shell -a "df -h" 
